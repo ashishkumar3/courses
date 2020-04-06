@@ -88,8 +88,8 @@ export class SignupComponent implements OnInit {
         });
 
       }).then(user => {
-        console.log(user);
-        this.router.navigate(['login']);
+        localStorage.token = user.token;
+        this.router.navigate(['/dashboard']);
       }).catch(error => {
         this.errorMessage = error.message;
       });

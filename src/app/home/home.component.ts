@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  isLoggedIn: boolean = localStorage.token ? true : false;
+
   constructor() { }
 
   ngOnInit(): void {

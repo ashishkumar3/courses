@@ -35,19 +35,25 @@
                     <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="#">Features</a>
+                    <a class="nav-link" routerLink="/explore">Explore</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="#">Pricing</a>
+                    <a class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="#">About</a>
+                    <a class="nav-link" *ngIf="isLoggedIn" routerLink="/logout">Log Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="!isLoggedIn" routerLink="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="!isLoggedIn" routerLink="/login">Log In</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
         </div>
     </div>
 </nav>
