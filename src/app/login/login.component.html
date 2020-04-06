@@ -1,0 +1,30 @@
+<img *ngIf="logingIn" src="../../assets/svg/pacman.svg">
+<form *ngIf="!logingIn">
+    <fieldset>
+        <div class="alert alert-dismissible alert-warning" *ngIf="errorMessage">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4 class="alert-heading">Warning!</h4>
+            <p class="mb-0">{{ errorMessage }}</p>
+        </div>
+        <legend>Login</legend>
+        <div class="row">
+            <div class="form-group col-lg-6 has-danger">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="email@example.com" [(ngModel)]="user.email" name="email">
+                <!-- <div class="invalid-feedback">Sorry, that email's taken. Try another?</div> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6 has-danger">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password"
+                    [(ngModel)]="user.password" name="password">
+                <!-- <div class="invalid-feedback">{{ errors.password }}</div> -->
+            </div>
+        </div>
+        <button type="button" (click)="onSubmit()" class="btn btn-primary">Login</button>
+        <small id="login" class="form-text text-muted">Dont have an account? <a routerLink="/signup">Signup</a>
+            .</small>
+    </fieldset>
+</form>
