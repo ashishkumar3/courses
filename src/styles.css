@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* css variables */
+/* :root {
+    font-size: 18px;
+    --text-primary: #576490;
+    --text-secondary: #576490;
+    --text-highlight: #09C372;
+    --bg-primary: #2A2E35;
+    --bg-secondary: #141418;
+    --shadow: 0 4px 8px rgba(0,0,0,0.38);
+    --transition-speed: 600ms;
+} */
+
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #576490;
+} */
+
+/* ul {
+    list-style-type: none;
+} */
+
+/* a {
+    text-decoration: none;
+} */
+
+/* main {
+    padding: 0rem 4rem;
+} */
+
+/* scrollbar */
+
+/* body::-webkit-scrollbar {
+    width: 0.25rem;
+} */
+
+/* body::-webkit-scrollbar-track {
+    background-color: #1e1e24;
+    background-color: white;
+} */
+
+/* body::-webkit-scrollbar-thumb {
+    background-color: #5995ED;
+} */
+
+@import 'bootswatch/dist/sketchy/bootstrap.css';
