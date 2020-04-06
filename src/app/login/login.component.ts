@@ -65,11 +65,11 @@ export class LoginComponent implements OnInit {
         });
       }).then(user => {
         console.log(user);
-        this.router.navigate(['home']);
+        localStorage.token = user.token;
+        this.router.navigate(['dashboard']);
       }).catch(err => {
         this.errorMessage = err.message;
       });
     }
   }
-
 }

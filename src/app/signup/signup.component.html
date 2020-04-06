@@ -1,5 +1,5 @@
 <img *ngIf="signingUp" src="../../assets/svg/pacman.svg">
-<form *ngIf="!signingUp">
+<form *ngIf="!signingUp" class="container">
     <fieldset>
         <div class="alert alert-dismissible alert-warning" *ngIf="errorMessage">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -7,6 +7,7 @@
             <p class="mb-0">{{ errorMessage }}</p>
         </div>
         <legend>Signup</legend>
+        <p>Start learning today!</p>
         <div class="row">
             <div class="form-group col-lg-6 has-danger">
                 <label for="name">Name*</label>

@@ -13,12 +13,16 @@ import { BlogComponent } from './blogs/blog/blog.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { IsLoggedInGuard } from './auth/is-logged-in.guard';
+import { IsLoggedOutGuard } from './auth/is-logged-out.guard';
 
 // Routes
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent, canActivate: [IsLoggedOutGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [IsLoggedOutGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [IsLoggedInGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -33,7 +37,8 @@ const routes: Routes = [
     BlogComponent,
     PageNotFoundComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

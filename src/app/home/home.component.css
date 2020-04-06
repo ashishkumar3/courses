@@ -1,4 +1,4 @@
-.banner-heading {
+/* .banner-heading {
     font-size: 6rem;
     font-weight: 800;
     color: #5995ED;
@@ -9,18 +9,18 @@ main {
     display: flex;
     justify-content: center;
     margin: 4rem 0;
-}
+} */
 
-.banner-body, .banner-img {
-    /* border: 1px solid black; */
+/* .banner-body, .banner-img {
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
     text-align: center;
-}
+} */
 
-.banner-body p {
+/* .banner-body p {
     color: var(--text-primary);
 }
 
@@ -30,18 +30,23 @@ img {
 }
 
 .btn-container {
-    /* border: 1px solid black; */
+    border: 1px solid black;
     width: 100%;
     display: flex;
     justify-content: center;
-}
+} */
 
-.btn {
-    /* border: 1px solid black; */
+/* .btn {
+    border: 1px solid black;
     background-color: #5995ED;
     padding: 1rem 2rem;
     border-radius: 2rem;
     color: white;
     cursor: pointer;
     margin: 0 1rem;
-}
+} */
+
+/* .modal {
+    z-index: 1050;
+    display: block;
+} */
