@@ -3,8 +3,13 @@
         <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
         <a href="#" class="list-group-item list-group-item-action">Library</a>
         <a href="#" class="list-group-item list-group-item-action disabled">Completed</a>
+        <a class="list-group-item list-group-item-action" (click)="logout()">Logout</a>
     </div>
     <div class="col-md-10 px-0">
+        <div class="alert alert-dismissible alert-success text-center col-md-6 container" *ngIf="user">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Welcome!</strong> You are logged in as <a class="alert-link">{{ user.email }}</a>.
+        </div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
             <li class="breadcrumb-item"><a routerLink="/dashboard">Library</a></li>
