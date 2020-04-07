@@ -18,13 +18,24 @@ import { IsLoggedInGuard } from './auth/is-logged-in.guard';
 import { IsLoggedOutGuard } from './auth/is-logged-out.guard';
 import { ExploreComponent } from './explore/explore.component';
 import { LogoutComponent } from './logout/logout.component';
+import { NotesComponent } from './dashboard/notes/notes.component';
+import { ProfileComponent } from './dashboard/profile/profile.component';
 
 // Routes
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent, canActivate: [IsLoggedOutGuard] },
   { path: 'login', component: LoginComponent, canActivate: [IsLoggedOutGuard] },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [IsLoggedInGuard] },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: 'notes', component: NotesComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: '', redirectTo: 'profile', pathMatch: 'full' }
+    ],
+    canActivate: [IsLoggedInGuard]
+  },
   { path: 'explore', component: ExploreComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -44,7 +55,8 @@ const routes: Routes = [
     LoginComponent,
     DashboardComponent,
     ExploreComponent,
-    LogoutComponent
+    NotesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

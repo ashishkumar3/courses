@@ -1,9 +1,8 @@
 <div class="row">
     <div class="list-group col-md-2 px-0">
-        <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action">Library</a>
-        <a href="#" class="list-group-item list-group-item-action disabled">Completed</a>
-        <a class="list-group-item list-group-item-action" (click)="logout()">Logout</a>
+        <a routerLink="/dashboard/profile" class="list-group-item list-group-item-action active">Profile</a>
+        <a routerLink="/dashboard/notes" class="list-group-item list-group-item-action">Notes</a>
+        <button class="list-group-item list-group-item-action" (click)="logout()">Logout</button>
     </div>
     <div class="col-md-10 px-0">
         <div class="alert alert-dismissible alert-success text-center col-md-6 container" *ngIf="user">
@@ -15,35 +14,6 @@
             <li class="breadcrumb-item"><a routerLink="/dashboard">Library</a></li>
             <li class="breadcrumb-item active">Data</li>
         </ol>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Course</th>
-                    <th scope="col">Instructor</th>
-                    <th scope="col">Progress</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="">
-                    <th scope="row">Active</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr>
-                    <th scope="row">Default</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-                <tr class="">
-                    <th scope="row">Primary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                </tr>
-            </tbody>
-        </table>
+        <router-outlet></router-outlet>
     </div>
 </div>
