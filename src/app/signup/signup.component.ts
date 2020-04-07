@@ -78,6 +78,7 @@ export class SignupComponent implements OnInit {
           'Content-Type': 'application/json'
         }
       }).then(res => {
+
         this.signingUp = false;
         if (res.ok) {
           return res.json();

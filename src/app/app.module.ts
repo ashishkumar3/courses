@@ -20,6 +20,7 @@ import { ExploreComponent } from './explore/explore.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NotesComponent } from './dashboard/notes/notes.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
+import { CoursesComponent } from './dashboard/courses/courses.component';
 
 // Routes
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
     children: [
       { path: 'notes', component: NotesComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'courses', component: CoursesComponent },
       { path: '', redirectTo: 'profile', pathMatch: 'full' }
     ],
     canActivate: [IsLoggedInGuard]
@@ -56,7 +58,8 @@ const routes: Routes = [
     DashboardComponent,
     ExploreComponent,
     NotesComponent,
-    ProfileComponent
+    ProfileComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,

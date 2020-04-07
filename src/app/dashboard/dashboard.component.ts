@@ -12,8 +12,12 @@ export class DashboardComponent implements OnInit {
   API_URL: string = 'http://localhost:3000';
   user;
 
+  breadcrumbs: string[];
+
   constructor(private router: Router) {
     // console.log(this.router.url);
+    this.breadcrumbs = this.router.url.split('/');
+    console.log(this.breadcrumbs);
   }
 
   ngOnInit(): void {

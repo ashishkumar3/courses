@@ -1,3 +1,7 @@
+<div class="alert alert-dismissible alert-danger" *ngIf="errorMessage">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Oh snap!</strong> {{ errorMessage }}
+</div>
 <div class="row">
     <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="col-md-6">
         <fieldset>
@@ -22,4 +26,3 @@
         </div>
     </div>
 </div>
-<p>something??</p>
