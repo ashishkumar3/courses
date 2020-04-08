@@ -19,14 +19,35 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="" *ngFor="let note of notes">
-            <th scope="row">{{ note.created_at | date }}</th>
+        <tr class="" *ngFor="let note of notes" (click)="showNoteCard(note)">
+            <th scope="row">{{ note.created_at | date: 'dd-mm-yyyy' }}</th>
             <td>{{ note.title }}</td>
-            <td>{{ note.updated_at | date }}</td>
+            <td>{{ note.updated_at | date: 'dd-mm-yyyy' }}</td>
             <td>buttons</td>
         </tr>
     </tbody>
 </table>
+
+<div class="modal" *ngIf="selectedNote" [ngClass]="toggleNoteCard ? 'show' : 'hide'">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                {{ selectedNote.title | titlecase }}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toggleNote()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ selectedNote.description }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="toggleNote()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal" [ngClass]="toggleNoteModal ? 'show' : 'hide' ">
     <div class="modal-dialog" role="document">
@@ -42,7 +63,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <textarea class="form-control" id="exampleTextarea" placeholder="Note description" rows="3"
+                    <textarea class="form-control" id="exampleTextarea" placeholder="Note description" rows="6"
                         name="description" ngModel></textarea>
                 </div>
             </div>

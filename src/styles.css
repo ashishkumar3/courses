@@ -46,3 +46,7 @@
 } */
 
 @import 'bootswatch/dist/lux/bootstrap.css';
+
+html {
+    overflow-y: scroll;
+}

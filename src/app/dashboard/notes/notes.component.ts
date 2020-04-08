@@ -14,9 +14,11 @@ export class NotesComponent implements OnInit {
   successMessage: boolean;
   errorMessage: string;
 
-  notes: { created_at: ''; title: string; updated_at: string; }[] = [];
+  notes: { created_at: ''; title: string; updated_at: string; descripton: string; }[] = [];
+  selectedNote: { created_at: string; title: string; updated_at: string; description: string; };
 
   toggleNoteModal: boolean = false;
+  toggleNoteCard: boolean = false;
 
   schema: Joi.Schema = Joi.object({
     title: Joi.string().trim().max(25),
@@ -43,10 +45,6 @@ export class NotesComponent implements OnInit {
         throw new Error(err.message);
       });
     }).then(result => {
-      // if (result.success) {
-      //   this.successMessage = true;
-      //   console.log(result);
-      // }
       console.log(result);
       this.notes = result;
     }).catch(err => this.errorMessage = err.errorMessage);
@@ -68,6 +66,15 @@ export class NotesComponent implements OnInit {
     } else if (result.error.details) {
       this.errorMessage = result.error.details[0].message;
     }
+  }
+
+  showNoteCard(note) {
+    this.selectedNote = note;
+    this.toggleNote();
+  }
+
+  toggleNote() {
+    this.toggleNoteCard = !this.toggleNoteCard;
   }
 
   onSubmit(form: NgForm) {
@@ -102,7 +109,8 @@ export class NotesComponent implements OnInit {
           this.notes.push({
             created_at: result.note.created_at,
             title: result.note.title,
-            updated_at: result.note.updated_at
+            updated_at: result.note.updated_at,
+            descripton: result.note.description
           });
         }
       }).catch(err => this.errorMessage = err.errorMessage);

@@ -21,6 +21,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { NotesComponent } from './dashboard/notes/notes.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { CoursesComponent } from './dashboard/courses/courses.component';
+import { NoteComponent } from './dashboard/notes/note/note.component';
 
 // Routes
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
   },
   { path: 'explore', component: ExploreComponent },
   { path: 'blogs', component: BlogsComponent },
+  { path: 'blogs/:id', component: BlogComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
@@ -60,7 +62,8 @@ const routes: Routes = [
     ExploreComponent,
     NotesComponent,
     ProfileComponent,
-    CoursesComponent
+    CoursesComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,

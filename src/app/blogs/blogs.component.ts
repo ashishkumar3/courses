@@ -9,7 +9,7 @@ export class BlogsComponent implements OnInit {
 
   blogs: { title: string; description: string; }[] = [
     {
-      title: 'Learn Anglar the easy way',
+      title: 'Learn Angular the easy way',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, animi qui natus asperiores necessitatibus nobis laboriosam aspernatur iure sed eligendi ullam porro ipsam saepe similique laborum. Nam laborum vel illum.'
     },
     {

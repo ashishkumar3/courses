@@ -1,11 +1,11 @@
-footer {
+/* footer {
     display: flex;
     flex-direction: column;
     background-color: #576490;
     color: white;
     padding: 0rem 4rem;
     font-size: 14px;
-    /* border: 1px solid red; */
+    border: 1px solid red;
 }
 
 li {
@@ -44,5 +44,5 @@ ul {
     width: 100%;
     padding: 0.5rem 0rem;
     margin: 0;
-    /* border: 1px solid green; */
-}
+    border: 1px solid green;
+} */
