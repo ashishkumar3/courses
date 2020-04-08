@@ -14,14 +14,7 @@ export class NotesComponent implements OnInit {
   successMessage: boolean;
   errorMessage: string;
 
-  notes: { date: ''; title: string; description: string; lastEdit: string; }[] = [
-    {
-      date: '',
-      title: '',
-      description: '',
-      lastEdit: ''
-    }
-  ];
+  notes: { created_at: ''; title: string; updated_at: string; }[] = [];
 
   toggleNoteModal: boolean = false;
 
@@ -33,6 +26,30 @@ export class NotesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getAllNotes();
+  }
+
+  getAllNotes() {
+    fetch('http://localhost:3000/api/v1/notes', {
+      method: 'GET',
+      headers: {
+        'authorization': `Bearer ${localStorage.token}`
+      }
+    }).then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return res.json().then(err => {
+        throw new Error(err.message);
+      });
+    }).then(result => {
+      // if (result.success) {
+      //   this.successMessage = true;
+      //   console.log(result);
+      // }
+      console.log(result);
+      this.notes = result;
+    }).catch(err => this.errorMessage = err.errorMessage);
   }
 
   newNote() {
@@ -82,6 +99,11 @@ export class NotesComponent implements OnInit {
           this.successMessage = true;
           this.closeNoteModal();
           console.log(result);
+          this.notes.push({
+            created_at: result.note.created_at,
+            title: result.note.title,
+            updated_at: result.note.updated_at
+          });
         }
       }).catch(err => this.errorMessage = err.errorMessage);
     }

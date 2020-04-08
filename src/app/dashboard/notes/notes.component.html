@@ -20,10 +20,10 @@
     </thead>
     <tbody>
         <tr class="" *ngFor="let note of notes">
-            <th scope="row">{{ note.date }}</th>
-            <td>{{ note.name }}</td>
+            <th scope="row">{{ note.created_at | date }}</th>
             <td>{{ note.title }}</td>
-            <td>{{ note.lastEdit }}</td>
+            <td>{{ note.updated_at | date }}</td>
+            <td>buttons</td>
         </tr>
     </tbody>
 </table>
