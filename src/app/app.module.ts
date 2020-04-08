@@ -39,6 +39,7 @@ const routes: Routes = [
     canActivate: [IsLoggedInGuard]
   },
   { path: 'explore', component: ExploreComponent },
+  { path: 'blogs', component: BlogsComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

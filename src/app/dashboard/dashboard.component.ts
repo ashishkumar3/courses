@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router) {
     // console.log(this.router.url);
     this.breadcrumbs = this.router.url.split('/');
-    console.log(this.breadcrumbs);
+    // console.log(this.breadcrumbs);
   }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
         authorization: `Bearer ${localStorage.token}`
       }
     }).then(res => res.json()).then(result => {
-      console.log("RESULT", result);
+      // console.log("RESULT", result);
       if (result.user) {
         this.user = result.user;
       } else {

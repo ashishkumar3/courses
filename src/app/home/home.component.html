@@ -11,15 +11,32 @@
     </div> -->
 <!-- </main> -->
 
-<div class="jumbotron text-center container">
-    <h1 class="display-3">Together we learn!🎉</h1>
-    <p class="lead">Learn programming with the best articles available on the internet ✨✨🌟</p>
-    <hr class="my-4">
-    <p>something somehitng.</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" [routerLink]="isLoggedIn ? ['/explore'] : ['/signup']"
-            role="button">{{ isLoggedIn ? 'Explore' : 'Sign Up' }}</a>
-    </p>
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Together we learn!🎉</h1>
+        <p class="lead">Learn programming with the best articles available on the internet ✨✨🌟</p>
+        <hr class="my-4">
+        <p>something somehitng.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" [routerLink]="isLoggedIn ? ['/explore'] : ['/signup']"
+                role="button">{{ isLoggedIn ? 'Explore' : 'Sign Up' }}</a>
+        </p>
+    </div>
+    <hr>
+    <div class="row">
+        <blockquote class="blockquote text-center col-md-4">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+        <blockquote class="blockquote text-center col-md-4">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+        <blockquote class="blockquote text-center col-md-4">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+    </div>
 </div>
 
 <div class="modal">

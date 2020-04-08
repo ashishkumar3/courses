@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as Joi from '@hapi/joi';
 
 @Component({
   selector: 'app-notes',
@@ -10,18 +11,34 @@ export class NotesComponent implements OnInit {
 
   title: string = '';
   description: string = '';
-
+  successMessage: boolean;
   errorMessage: string;
+
+  schema: Joi.Schema = Joi.object({
+    title: Joi.string().trim().max(25),
+    description: Joi.string().trim().max(500)
+  });
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  isNoteValid(note) {
+    this.errorMessage = null;
+    const result = this.schema.validate(note);
+    if (!result.error) {
+      return true;
+    } else if (result.error.details) {
+      this.errorMessage = result.error.details[0].message;
+    }
+  }
+
   onSubmit(form: NgForm) {
     if (form.value) {
       // post the note
-      if (form.value.title.length < 1 || form.value.description.length < 1) {
+
+      if (!this.isNoteValid(form.value)) {
         this.errorMessage = "Write something atleast!";
         return;
       }
@@ -42,7 +59,9 @@ export class NotesComponent implements OnInit {
         });
 
       }).then(result => {
-        console.log(result, "I GOT THIS!");
+        if (result.success) {
+          this.successMessage = true;
+        }
       }).catch(err => this.errorMessage = err.errorMessage);
     }
   }
