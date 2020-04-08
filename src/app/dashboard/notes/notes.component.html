@@ -6,27 +6,51 @@
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>Well done!</strong> You successfully added a note!
 </div>
-<div class="row">
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="col-md-6">
-        <fieldset>
-            <legend>Note</legend>
-            <div class="form-group">
-                <label class="col-form-label" for="inputDefault">Note title</label>
-                <input type="text" class="form-control" placeholder="Note title" id="inputDefault" name="title" ngModel>
+
+<button class="btn btn-primary" (click)="newNote()">New Note</button>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Date Added</th>
+            <th scope="col">Note</th>
+            <th scope="col">Last Edit</th>
+            <th scope="col">Do Something</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="" *ngFor="let note of notes">
+            <th scope="row">{{ note.date }}</th>
+            <td>{{ note.name }}</td>
+            <td>{{ note.title }}</td>
+            <td>{{ note.lastEdit }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal" [ngClass]="toggleNoteModal ? 'show' : 'hide' ">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" (ngSubmit)="onSubmit(form)" #form="ngForm" autocomplete="off">
+            <div class="modal-header">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Note title" id="inputDefault" name="title"
+                        ngModel>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeNoteModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="form-group">
-                <label for="exampleTextarea">Note description</label>
-                <textarea class="form-control" id="exampleTextarea" placeholder="Note description" rows="3"
-                    name="description" ngModel></textarea>
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea class="form-control" id="exampleTextarea" placeholder="Note description" rows="3"
+                        name="description" ngModel></textarea>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary" name="submit_button">Submit</button>
-        </fieldset>
-    </form>
-    <div class=" card border-secondary mb-3 col-md-6" style="max-width: 25rem;">
-        <div class="card-header">07-04-2020</div>
-        <div class="card-body">
-            <h4 class="card-title">{{ form.value.title || 'Title' }}</h4>
-            <p class="card-text">{{ form.value.description || 'Your note here' }}</p>
-        </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="closeNoteModal()">Close</button>
+            </div>
+        </form>
     </div>
 </div>

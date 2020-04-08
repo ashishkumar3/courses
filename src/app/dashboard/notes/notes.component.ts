@@ -14,6 +14,17 @@ export class NotesComponent implements OnInit {
   successMessage: boolean;
   errorMessage: string;
 
+  notes: { date: ''; title: string; description: string; lastEdit: string; }[] = [
+    {
+      date: '',
+      title: '',
+      description: '',
+      lastEdit: ''
+    }
+  ];
+
+  toggleNoteModal: boolean = false;
+
   schema: Joi.Schema = Joi.object({
     title: Joi.string().trim().max(25),
     description: Joi.string().trim().max(500)
@@ -22,6 +33,14 @@ export class NotesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  newNote() {
+    this.toggleNoteModal = true;
+  }
+
+  closeNoteModal() {
+    this.toggleNoteModal = false;
   }
 
   isNoteValid(note) {
@@ -61,6 +80,8 @@ export class NotesComponent implements OnInit {
       }).then(result => {
         if (result.success) {
           this.successMessage = true;
+          this.closeNoteModal();
+          console.log(result);
         }
       }).catch(err => this.errorMessage = err.errorMessage);
     }
