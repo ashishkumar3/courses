@@ -37,8 +37,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                {{ selectedNote.description }}
+            <div class="modal-body" [innerHTML]="renderMarkdown(selectedNote.description)">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as Joi from '@hapi/joi';
+import * as MarkdownIt from 'markdown-it';
 
 @Component({
   selector: 'app-notes',
@@ -8,6 +9,8 @@ import * as Joi from '@hapi/joi';
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
+
+  md = new MarkdownIt();
 
   title: string = '';
   description: string = '';
@@ -29,6 +32,10 @@ export class NotesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllNotes();
+  }
+
+  renderMarkdown(note) {
+    return this.md.render(note);
   }
 
   getAllNotes() {
@@ -106,7 +113,7 @@ export class NotesComponent implements OnInit {
           this.successMessage = true;
           this.closeNoteModal();
           console.log(result);
-          this.notes.push({
+          this.notes.unshift({
             created_at: result.note.created_at,
             title: result.note.title,
             updated_at: result.note.updated_at,
