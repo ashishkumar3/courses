@@ -50,3 +50,19 @@ img {
     z-index: 1050;
     display: block;
 } */
+
+.gradient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+    text-transform: lowercase;
+}
+
+.banner {
+    display: flex;
+    font-size: 60px;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+  }

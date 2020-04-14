@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   API_URL: string = 'http://localhost:3000';
-  user;
+  user = localStorage.token;
 
   constructor(private router: Router) { }
 
@@ -20,9 +20,9 @@ export class ProfileComponent implements OnInit {
         authorization: `Bearer ${localStorage.token}`
       }
     }).then(res => res.json()).then(result => {
-      console.log("RESULT", result);
       if (result.user) {
         this.user = result.user;
+        console.log(this.user);
       } else {
         this.logout();
       }

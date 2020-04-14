@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import * as Joi from '@hapi/joi';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
-const LOGIN_URL = 'http://localhost:3000/auth/login';
+import { User } from './user.model';
+import { HttpClient } from '@angular/common/http';
+import { LogInService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,31 +16,32 @@ export class LoginComponent implements OnInit {
   logingIn: boolean = false;
   errorMessage: string = null;
 
-  user: { email: string; password: string; } = {
+  rememberMe: boolean = false;
+
+  user: User = {
     email: null,
     password: null
   };
 
-  schema: Joi.Schema = Joi.object({
-    email: Joi.string()
-      .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
-    password: Joi.string()
-      .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-    confirmPassword: Joi.ref('password')
-  });
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient, private loginService: LogInService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  // onSubmit() {
+  //   this.login();
+  // }
+
+  onSubmit(form: NgForm) {
+    this.user.email = form.value.email;
+    this.user.password = form.value.password;
+    // console.log(this.user);
     this.login();
   }
 
-  isUserValid() {
+  private isUserValid() {
     this.errorMessage = null;
-    const result = this.schema.validate(this.user);
+    const result = this.loginService.validateUser(this.user);
 
     if (!result.error) {
       return true;
@@ -47,29 +50,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login() {
-    console.log(this.user.email, this.user.password);
+  private login() {
     if (this.isUserValid()) {
       this.logingIn = true;
-      fetch(LOGIN_URL, {
-        method: 'POST',
-        body: JSON.stringify(this.user),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(res => {
-        this.logingIn = false;
-        if (res.ok) return res.json();
-        return res.json().then(err => {
-          throw new Error(err.message);
-        });
-      }).then(user => {
-        console.log(user);
-        localStorage.token = user.token;
+
+      this.loginService.loginUser(this.user).subscribe(response => {
+        localStorage.token = response.token;
         this.router.navigate(['dashboard']);
-      }).catch(err => {
-        this.errorMessage = err.message;
+      }, error => {
+        this.errorMessage = error.message;
       });
+
     }
   }
 }

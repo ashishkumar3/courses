@@ -1,5 +1,5 @@
 <img *ngIf="logingIn" src="../../assets/svg/pacman.svg">
-<form *ngIf="!logingIn" class="container">
+<form *ngIf="!logingIn" class="container" (ngSubmit)="onSubmit(f)" #f="ngForm">
     <fieldset>
         <div class="alert alert-dismissible alert-warning" *ngIf="errorMessage">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -10,20 +10,20 @@
         <div class="row">
             <div class="form-group col-lg-6 has-danger">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                    placeholder="email@example.com" [(ngModel)]="user.email" name="email">
-                <!-- <div class="invalid-feedback">Sorry, that email's taken. Try another?</div> -->
+                <input type="email" class="form-control " id="email" aria-describedby="emailHelp"
+                    placeholder="email@example.com" name="email" ngModel #email email required>
+                <div class="invalid-feedback">Sorry, that email's taken. Try another?</div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-lg-6 has-danger">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password"
-                    [(ngModel)]="user.password" name="password">
-                <!-- <div class="invalid-feedback">{{ errors.password }}</div> -->
+                <input type="password" class="form-control" #password id="password" placeholder="Password"
+                    name="password" ngModel password required>
+                <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
             </div>
         </div>
-        <button type="button" (click)="onSubmit()" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button>
         <small id="login" class="form-text text-muted">Dont have an account? <a routerLink="/signup">Signup</a>
             .</small>
     </fieldset>

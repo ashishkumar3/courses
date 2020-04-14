@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as Joi from '@hapi/joi';
 import * as MarkdownIt from 'markdown-it';
+import * as emoji from 'markdown-it-emoji';
 
 @Component({
   selector: 'app-notes',
@@ -32,6 +33,7 @@ export class NotesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllNotes();
+    this.md.use(emoji);
   }
 
   renderMarkdown(note) {

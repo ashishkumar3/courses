@@ -32,7 +32,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                {{ selectedNote.title | titlecase }}
+                <div [innerHTML]="renderMarkdown(selectedNote.title)"></div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toggleNote()">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -40,13 +40,13 @@
             <div class="modal-body" [innerHTML]="renderMarkdown(selectedNote.description)">
             </div>
             <div class="modal-footer">
+                <p class="text-left">Date</p>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                     (click)="toggleNote()">Close</button>
             </div>
         </div>
     </div>
 </div>
-
 
 <div class="modal" [ngClass]="toggleNoteModal ? 'show' : 'hide' ">
     <div class="modal-dialog" role="document">

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import * as Joi from '@hapi/joi';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
-const SIGNUP_URL = 'http://localhost:3000/auth/signup';
+import { User } from './user.model';
+import { SignUpService } from './signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,47 +13,35 @@ const SIGNUP_URL = 'http://localhost:3000/auth/signup';
 })
 export class SignupComponent implements OnInit {
 
-  user: {
-    name: string,
-    email: string;
-    password: string;
-    confirmPassword: string;
-  } = {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    };
+  user: User = {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  };
 
   errorMessage: string = null;
 
   signingUp: boolean = false;
 
-  schema: Joi.Schema = Joi.object({
-    name: Joi.string()
-      .min(3)
-      .max(30)
-      .required().regex(/^\w+(?:\s+\w+)*$/),
-    email: Joi.string()
-      .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
-    password: Joi.string()
-      .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-    confirmPassword: Joi.ref('password')
-  });
+  genders = ['Male', 'Female', 'Other'];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient, private signupService: SignUpService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    // validate the user input
+  onSubmit(form: NgForm) {
+    this.user.name = form.value.name;
+    this.user.email = form.value.email;
+    this.user.password = form.value.password;
+    this.user.confirmPassword = form.value.confirmPassword;
     this.signup();
   }
 
-  isUserValid() {
+  private isUserValid() {
     this.errorMessage = null;
-    const result = this.schema.validate(this.user);
+    const result = this.signupService.validateUserSchema(this.user);
 
     if (!result.error) {
       // valid user
@@ -61,7 +51,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  signup() {
+  private signup() {
     if (this.isUserValid()) {
 
       const body = {
@@ -71,30 +61,22 @@ export class SignupComponent implements OnInit {
       };
 
       this.signingUp = true;
-      fetch(SIGNUP_URL, {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(res => {
 
+      this.signupService.createUser(body).subscribe(response => {
         this.signingUp = false;
-        if (res.ok) {
-          return res.json();
-        }
 
-        return res.json().then(err => {
-          throw new Error(err.message);
-        });
-
-      }).then(user => {
-        localStorage.token = user.token;
+        localStorage.token = response.token;
         this.router.navigate(['/dashboard']);
-      }).catch(error => {
+      }, error => {
+        this.signingUp = false;
         this.errorMessage = error.message;
       });
+
     }
+  }
+
+  private signupUser() {
+
   }
 
 }
