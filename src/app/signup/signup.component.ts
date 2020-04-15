@@ -69,14 +69,10 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }, error => {
         this.signingUp = false;
-        this.errorMessage = error.message;
+        this.errorMessage = error.error.message;
       });
 
     }
-  }
-
-  private signupUser() {
-
   }
 
 }

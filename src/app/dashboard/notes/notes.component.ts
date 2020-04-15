@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import * as Joi from '@hapi/joi';
 import * as MarkdownIt from 'markdown-it';
 import * as emoji from 'markdown-it-emoji';
+import { Note } from './note.model';
+import { NoteService } from './note.service';
 
 @Component({
   selector: 'app-notes',
@@ -18,18 +19,15 @@ export class NotesComponent implements OnInit {
   successMessage: boolean;
   errorMessage: string;
 
-  notes: { created_at: ''; title: string; updated_at: string; descripton: string; }[] = [];
-  selectedNote: { created_at: string; title: string; updated_at: string; description: string; };
+  notes: Note[] = [];
+  selectedNote: Note;
 
   toggleNoteModal: boolean = false;
   toggleNoteCard: boolean = false;
 
-  schema: Joi.Schema = Joi.object({
-    title: Joi.string().trim().max(25),
-    description: Joi.string().trim().max(500)
-  });
 
-  constructor() { }
+
+  constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {
     this.getAllNotes();
@@ -41,22 +39,11 @@ export class NotesComponent implements OnInit {
   }
 
   getAllNotes() {
-    fetch('http://localhost:3000/api/v1/notes', {
-      method: 'GET',
-      headers: {
-        'authorization': `Bearer ${localStorage.token}`
-      }
-    }).then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return res.json().then(err => {
-        throw new Error(err.message);
-      });
-    }).then(result => {
-      console.log(result);
-      this.notes = result;
-    }).catch(err => this.errorMessage = err.errorMessage);
+    this.noteService.fetchNotes().subscribe(notes => {
+      this.notes = notes;
+    }, error => {
+      this.errorMessage = error.message;
+    });
   }
 
   newNote() {
@@ -69,7 +56,7 @@ export class NotesComponent implements OnInit {
 
   isNoteValid(note) {
     this.errorMessage = null;
-    const result = this.schema.validate(note);
+    const result = this.noteService.validateNote(note);
     if (!result.error) {
       return true;
     } else if (result.error.details) {
@@ -88,41 +75,26 @@ export class NotesComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.value) {
-      // post the note
 
       if (!this.isNoteValid(form.value)) {
         this.errorMessage = "Write something atleast!";
         return;
       }
-      fetch('http://localhost:3000/api/v1/notes/create', {
-        method: 'POST',
-        body: JSON.stringify(form.value),
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': `Bearer ${localStorage.token}`
-        }
-      }).then(res => {
-        if (res.ok) {
-          console.log('RESPONSE IS OK!');
-          return res.json();
-        }
-        return res.json().then(err => {
-          throw new Error(err.message);
-        });
 
-      }).then(result => {
-        if (result.success) {
+      this.noteService.createNote(form.value).subscribe(response => {
+        if (response.success) {
           this.successMessage = true;
-          this.closeNoteModal();
-          console.log(result);
           this.notes.unshift({
-            created_at: result.note.created_at,
-            title: result.note.title,
-            updated_at: result.note.updated_at,
-            descripton: result.note.description
+            created_at: response.note.created_at,
+            title: response.note.title,
+            updated_at: response.note.updated_at,
+            description: response.note.description
           });
         }
-      }).catch(err => this.errorMessage = err.errorMessage);
+      }, error => {
+        this.errorMessage = error.error.message;
+      });
+      this.closeNoteModal();
     }
   }
 

@@ -58,7 +58,8 @@ export class LoginComponent implements OnInit {
         localStorage.token = response.token;
         this.router.navigate(['dashboard']);
       }, error => {
-        this.errorMessage = error.message;
+        this.logingIn = false;
+        this.errorMessage = error.error.message;
       });
 
     }
