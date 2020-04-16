@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from './course.model';
+import { CoursesService } from './courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,41 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  courses: { date: string; name: string; instructor: string; progress: string; }[] = [
-    {
-      date: '07-04-2020',
-      name: 'MEAN Stack',
-      instructor: 'Mosh',
-      progress: '10'
-    },
-    {
-      date: '17-12-2019',
-      name: 'MERN Stack',
-      instructor: 'Academind',
-      progress: '25'
-    },
-    {
-      date: '01-04-2020',
-      name: 'ELK Stack',
-      instructor: 'Fireship',
-      progress: '60'
-    }, {
-      date: '27-02-2020',
-      name: 'Angular',
-      instructor: 'Mosh',
-      progress: '15'
-    },
-    {
-      date: '13-03-2020',
-      name: 'NodeJS',
-      instructor: 'Bucky Roberts',
-      progress: '35'
-    }
-  ];
+  courses: Course[] = [];
 
-  constructor() { }
+  constructor(private coursesService: CoursesService) { }
 
   ngOnInit(): void {
+    this.showCourses();
+    console.log(this.courses);
+  }
+
+  private showCourses() {
+    this.courses = this.coursesService.fetchCourses();
+  }
+
+  createCourse() {
+    if (this.coursesService.checkUserPrivileges()) {
+      // refer to some teaching website.
+      console.log('Course created!');
+    }
   }
 
 }

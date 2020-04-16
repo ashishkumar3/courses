@@ -4,15 +4,15 @@
             <th scope="col">Date</th>
             <th scope="col">Course</th>
             <th scope="col">Instructor</th>
-            <th scope="col">Progress</th>
+            <th scope="col">Rating</th>
         </tr>
     </thead>
     <tbody>
         <tr class="" *ngFor="let course of courses">
-            <th scope="row">{{ course.date }}</th>
+            <th scope="row">{{ course.date_applied }}</th>
             <td>{{ course.name }}</td>
             <td>{{ course.instructor }}</td>
-            <td>{{ course.progress }}</td>
+            <td>{{ course.rating }}</td>
         </tr>
     </tbody>
 </table>

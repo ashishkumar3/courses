@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { DashboardService } from './dashboard.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,30 +16,28 @@ export class DashboardComponent implements OnInit {
 
   breadcrumbs: string[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dashboardService: DashboardService, private authService: AuthService) {
     // console.log(this.router.url);
     this.breadcrumbs = this.router.url.split('/');
     // console.log(this.breadcrumbs);
   }
 
   ngOnInit(): void {
-    fetch(this.API_URL, {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${localStorage.token}`
-      }
-    }).then(res => res.json()).then(result => {
-      // console.log("RESULT", result);
-      if (result.user) {
-        this.user = result.user;
+
+    this.dashboardService.getUserDetails().subscribe(response => {
+      if (response.user) {
+        this.user = response.user;
       } else {
         this.logout();
       }
-    }).catch(err => console.log(err));
+    }, error => {
+      // handle error
+      console.log(error);
+    });
   }
 
   logout() {
-    localStorage.removeItem('token');
+    this.authService.removeToken();
     this.router.navigate(['/login']);
   }
 
