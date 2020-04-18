@@ -21,6 +21,11 @@ import { NotesComponent } from './dashboard/notes/notes.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { CoursesComponent } from './dashboard/courses/courses.component';
 import { NoteComponent } from './dashboard/notes/note/note.component';
+import { QnaComponent } from './qna/qna.component';
+import { UserComponent } from './qna/users/user/user.component';
+import { UsersComponent } from './qna/users/users.component';
+import { QuestionsComponent } from './qna/questions/questions.component';
+import { QuestionComponent } from './qna/questions/question/question.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,12 @@ import { NoteComponent } from './dashboard/notes/note/note.component';
     NotesComponent,
     ProfileComponent,
     CoursesComponent,
-    NoteComponent
+    NoteComponent,
+    QnaComponent,
+    UserComponent,
+    UsersComponent,
+    QuestionsComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

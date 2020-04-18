@@ -1,0 +1,16 @@
+<div class="container my-2">
+    <ul class="list-group" *ngIf="questions">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let question of questions">
+            <div>
+                <div>
+                    <a [routerLink]="['questions', question.id]">{{ question.title }}</a>
+                </div>
+                <div>
+                    <a [routerLink]="['users', question.user_id]">@{{ question.questioner | titlecase }}</a>
+                </div>
+            </div>
+            <span class="badge badge-primary badge-pill">{{ question.rating }}</span>
+        </li>
+    </ul>
+</div>

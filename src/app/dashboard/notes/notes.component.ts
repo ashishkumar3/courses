@@ -25,8 +25,6 @@ export class NotesComponent implements OnInit {
   toggleNoteModal: boolean = false;
   toggleNoteCard: boolean = false;
 
-
-
   constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {

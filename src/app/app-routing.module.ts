@@ -16,6 +16,11 @@ import { LogoutComponent } from './logout/logout.component';
 import { NotesComponent } from './dashboard/notes/notes.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { CoursesComponent } from './dashboard/courses/courses.component';
+import { QnaComponent } from './qna/qna.component';
+import { UserComponent } from './qna/users/user/user.component';
+import { UsersComponent } from './qna/users/users.component';
+import { QuestionComponent } from './qna/questions/question/question.component';
+import { QuestionsComponent } from './qna/questions/questions.component';
 
 // Routes
 const routes: Routes = [
@@ -32,6 +37,26 @@ const routes: Routes = [
       { path: '', redirectTo: 'profile', pathMatch: 'full' }
     ],
     canActivate: [IsLoggedInGuard]
+  },
+  {
+    path: 'qna',
+    component: QnaComponent
+  },
+  {
+    path: 'qna/users/:id',
+    component: UserComponent
+  },
+  {
+    path: 'qna/users',
+    component: UsersComponent
+  },
+  {
+    path: 'qna/questions/:id',
+    component: QuestionComponent
+  },
+  {
+    path: 'qna/questions',
+    component: QuestionsComponent
   },
   { path: 'explore', component: ExploreComponent },
   { path: 'blogs', component: BlogsComponent },
