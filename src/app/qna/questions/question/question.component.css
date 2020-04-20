@@ -1,0 +1,10 @@
+.my-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.ques {
+    display: flex;
+    align-items: center;
+}

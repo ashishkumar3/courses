@@ -1,10 +1,11 @@
-export interface Question {
+export interface Comment {
     id: number;
-    title: string;
+    answer_id: number;
+    question_id: number;
     description: string;
     rating: number;
     user_id: number;
-    question_by?: string;
+    comment_by?: string;
     created_at: string;
     updated_at: string;
     deleted_at: string;

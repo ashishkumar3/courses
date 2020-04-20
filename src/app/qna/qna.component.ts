@@ -1,6 +1,7 @@
 import { Component, OnInit, QueryList } from '@angular/core';
 import { Question } from './question.model';
 import { QnaService } from './qna.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-qna',
@@ -20,6 +21,8 @@ export class QnaComponent implements OnInit {
   private getAllQuestions() {
     this.qnaService.fetchAllQuestions().subscribe(response => {
       this.questions = response;
+    }, (error: HttpErrorResponse) => {
+      console.log(error.message);
     });
   }
 

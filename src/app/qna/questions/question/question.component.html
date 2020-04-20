@@ -1,3 +1,35 @@
-<div class="container">
-    question here
+<div class="col-md-8 my-container" *ngIf="question">
+    <div class="question">
+        <div class="ques">
+            <div class="border mx-1">{{ question.rating }}</div>
+            <h1 class="border">Q. {{ question.title }}</h1>
+        </div>
+        <p class="m-4">{{ question.description }}</p>
+        <footer class="blockquote-footer"><a
+                [routerLink]="['users', question.user_id]">@{{ question.question_by | titlecase }}</a> <cite
+                title="Source Title"> {{ question.created_at | date: 'EEEE, MMMM d, y' }}</cite>
+        </footer>
+        <div class="comment" *ngFor="let comment of comments">
+            <p *ngIf="comment.question_id === question.id">{{ comment.description }} - <a
+                    [routerLink]="['users', question.user_id]">@{{ question.question_by | titlecase }}</a> <cite
+                    title="Source Title"> {{ question.created_at | date: 'EEEE, MMMM d, y' }}</cite></p>
+        </div>
+    </div>
+    <hr>
+    <div class="answer" *ngFor="let answer of answers">
+        <span>{{ answer.rating }}</span>
+        <p>{{ answer.description }}</p>
+        <footer class="blockquote-footer"><a
+                [routerLink]="['users', answer.user_id]">@{{ answer.answer_by | titlecase }}</a> <cite
+                title="Source Title"> {{ answer.created_at | date: 'EEEE, MMMM d, y' }}</cite>
+        </footer>
+        <div class="comment" *ngFor="let comment of comments">
+            <p *ngIf="comment.answer_id === answer.id">{{ comment.description }} - <a
+                    [routerLink]="['users', answer.user_id]">@{{ comment.comment_by | titlecase }}</a> <cite
+                    title="Source Title"> {{ answer.created_at | date: 'EEEE, MMMM d, y' }}</cite></p>
+        </div>
+    </div>
+    <div class="">
+        Answer the question
+    </div>
 </div>
