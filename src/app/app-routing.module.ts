@@ -21,6 +21,7 @@ import { UserComponent } from './qna/users/user/user.component';
 import { UsersComponent } from './qna/users/users.component';
 import { QuestionComponent } from './qna/questions/question/question.component';
 import { QuestionsComponent } from './qna/questions/questions.component';
+import { AskComponent } from './qna/ask/ask.component';
 
 // Routes
 const routes: Routes = [
@@ -57,6 +58,11 @@ const routes: Routes = [
   {
     path: 'qna/questions',
     component: QuestionsComponent
+  },
+  {
+    path: 'qna/ask',
+    component: AskComponent,
+    canActivate: [IsLoggedInGuard]
   },
   { path: 'explore', component: ExploreComponent },
   { path: 'blogs', component: BlogsComponent },

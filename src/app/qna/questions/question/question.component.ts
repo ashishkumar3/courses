@@ -27,6 +27,8 @@ export class QuestionComponent implements OnInit {
     // get the id from the url params
     this.ques_id = +this.activatedRoute.snapshot.paramMap.get("id");
 
+    console.log('Snapshot id:', this.ques_id);
+
     // fetch the question with id as ques_id
     this.questionService.fetchQuestionDetails(this.ques_id).subscribe(response => {
       console.log(response);

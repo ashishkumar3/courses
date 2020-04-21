@@ -1,0 +1,24 @@
+<div class="container">
+    <!-- <div class="alert alert-dismissible alert-primary">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Alert!</strong> Make sure you have read the <a href="#" class="alert-link">guidelines</a> and then
+        submit the question.
+    </div> -->
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="form-group">
+            <label for="title">Question Title</label>
+            <input type="text" class="form-control" id="ques_title" aria-describedby="quesTitleHelp"
+                placeholder="Question title" name="title" required ngModel>
+            <small id="quesTitleHelp" class="form-text text-muted">Make sure there is not a same/similar question asked
+                already. In that case this might get deleted later or may get flagged by the community. Read the
+                guidelines
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="question_body">Question Body</label>
+            <textarea class="form-control" id="question_body" placeholder="What exact problem you have?" rows="7"
+                name="description" required ngModel></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

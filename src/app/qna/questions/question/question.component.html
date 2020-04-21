@@ -1,35 +1,70 @@
-<div class="col-md-8 my-container" *ngIf="question">
-    <div class="question">
-        <div class="ques">
-            <div class="border mx-1">{{ question.rating }}</div>
-            <h1 class="border">Q. {{ question.title }}</h1>
-        </div>
-        <p class="m-4">{{ question.description }}</p>
-        <footer class="blockquote-footer"><a
-                [routerLink]="['users', question.user_id]">@{{ question.question_by | titlecase }}</a> <cite
-                title="Source Title"> {{ question.created_at | date: 'EEEE, MMMM d, y' }}</cite>
-        </footer>
-        <div class="comment" *ngFor="let comment of comments">
-            <p *ngIf="comment.question_id === question.id">{{ comment.description }} - <a
+<div class="col-md-8 container">
+    <div class="row border py-2" *ngIf="question">
+        <div class="col-md-1">{{ question.rating }}</div>
+        <div class="col-md-11">
+            <h1>{{ question.title }}</h1>
+            <p>{{ question.description }}</p>
+            <footer class="blockquote-footer d-flex justify-content-end"><a
                     [routerLink]="['users', question.user_id]">@{{ question.question_by | titlecase }}</a> <cite
-                    title="Source Title"> {{ question.created_at | date: 'EEEE, MMMM d, y' }}</cite></p>
+                    title="Source Title"> {{ question.created_at | date: 'EEEE, MMMM d, y' }}</cite>
+            </footer>
+            <hr>
+            <div class="row" *ngFor="let comment of comments">
+                <div *ngIf="comment.question_id === question.id">
+                    <div class="col-md-1">
+                        {{ comment.rating }}
+                    </div>
+                    <div class="col-md-11">
+                        <p>{{ comment.description }} - <a
+                                [routerLink]="['users', question.user_id]">@{{ question.question_by | titlecase }}</a>
+                            <cite title="Source Title" class="">
+                                {{ question.created_at | date: 'EEEE, MMMM d, y' }}</cite>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <button class="btn btn-primary btn-sm">Comment</button>
         </div>
     </div>
     <hr>
-    <div class="answer" *ngFor="let answer of answers">
-        <span>{{ answer.rating }}</span>
-        <p>{{ answer.description }}</p>
-        <footer class="blockquote-footer"><a
-                [routerLink]="['users', answer.user_id]">@{{ answer.answer_by | titlecase }}</a> <cite
-                title="Source Title"> {{ answer.created_at | date: 'EEEE, MMMM d, y' }}</cite>
-        </footer>
-        <div class="comment" *ngFor="let comment of comments">
-            <p *ngIf="comment.answer_id === answer.id">{{ comment.description }} - <a
-                    [routerLink]="['users', answer.user_id]">@{{ comment.comment_by | titlecase }}</a> <cite
-                    title="Source Title"> {{ answer.created_at | date: 'EEEE, MMMM d, y' }}</cite></p>
+    <h6>Answers</h6>
+    <hr>
+    <div class="row border py-2 my-2" *ngFor="let answer of answers">
+        <div class="col-md-1">{{ answer.rating }}</div>
+        <div class="col-md-11">
+            <p>{{ answer.description }}</p>
+            <footer class="blockquote-footer d-flex justify-content-end"><a
+                    [routerLink]="['users', question.user_id]">@{{ answer.answer_by | titlecase }}</a> <cite
+                    title="Source Title"> {{ answer.created_at | date: 'EEEE, MMMM d, y' }}</cite>
+            </footer>
+            <hr>
+            <div class="row" *ngFor="let comment of comments">
+                <div *ngIf="comment.answer_id === answer.id">
+                    <div class="col-md-1">
+                        {{ comment.rating }}
+                    </div>
+                    <div class="col-md-11">
+                        <p>{{ comment.description }} - <a
+                                [routerLink]="['users', comment.user_id]">@{{ comment.comment_by | titlecase }}</a>
+                            <cite title="Source Title" class="">
+                                {{ comment.created_at | date: 'EEEE, MMMM d, y' }}</cite>
+                        </p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-sm">Comment</button>
+            <hr>
         </div>
+        <hr>
     </div>
-    <div class="">
-        Answer the question
-    </div>
+    <hr>
+    <form action="">
+        <div class="form-group">
+            <label for="answer_body">Your Answer</label>
+            <textarea class="form-control" id="answer_body" rows="7"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+    </form>
 </div>

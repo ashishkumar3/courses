@@ -26,6 +26,7 @@ import { UserComponent } from './qna/users/user/user.component';
 import { UsersComponent } from './qna/users/users.component';
 import { QuestionsComponent } from './qna/questions/questions.component';
 import { QuestionComponent } from './qna/questions/question/question.component';
+import { AskComponent } from './qna/ask/ask.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { QuestionComponent } from './qna/questions/question/question.component';
     UserComponent,
     UsersComponent,
     QuestionsComponent,
-    QuestionComponent
+    QuestionComponent,
+    AskComponent
   ],
   imports: [
     BrowserModule,

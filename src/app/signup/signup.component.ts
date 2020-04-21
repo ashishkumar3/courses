@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-import { User } from './user.model';
+import { User } from './user-signup.model';
 import { SignUpService } from './signup.service';
 
 @Component({
