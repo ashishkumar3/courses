@@ -1,0 +1,11 @@
+.guidelines {
+    cursor: pointer;
+}
+
+.showModal {
+    display: block;
+}
+
+.hideModal {
+    display: none;
+}

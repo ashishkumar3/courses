@@ -1,17 +1,17 @@
-<div class="container">
+<div class="container my-2 col-md-8">
     <!-- <div class="alert alert-dismissible alert-primary">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Alert!</strong> Make sure you have read the <a href="#" class="alert-link">guidelines</a> and then
         submit the question.
     </div> -->
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="">
         <div class="form-group">
             <label for="title">Question Title</label>
             <input type="text" class="form-control" id="ques_title" aria-describedby="quesTitleHelp"
                 placeholder="Question title" name="title" required ngModel>
             <small id="quesTitleHelp" class="form-text text-muted">Make sure there is not a same/similar question asked
                 already. In that case this might get deleted later or may get flagged by the community. Read the
-                guidelines
+                <u class="guidelines" (click)="toggleModal()">guidelines</u>
             </small>
         </div>
         <div class="form-group">
@@ -21,4 +21,29 @@
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
     </form>
+</div>
+<div class="modal" [ngClass]="{ 'showModal': modal===true, 'hideModal': modal===false }">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Qna Guidelines</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toggleModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>List of all the requirements for asking questions and answering.</p>
+                <ul>
+                    <li>You agree to do this...</li>
+                    <li>You agree to do that...</li>
+                    <li>This that this that bla bla bla...</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="toggleModal()">I accept</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="toggleModal()">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

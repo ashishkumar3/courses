@@ -12,6 +12,9 @@ export class AskComponent implements OnInit {
 
   questionDetails: { title: string; description: string; };
 
+  // Design
+  modal: boolean = false;
+
   constructor(private askService: AskService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,6 +33,10 @@ export class AskComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  toggleModal() {
+    this.modal = !this.modal;
   }
 
 }
