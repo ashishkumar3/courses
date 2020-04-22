@@ -1,8 +1,9 @@
-
 import * as Joi from '@hapi/joi';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Note } from './note.model';
+
+import { ApiConstant } from '../../api-constants';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +21,7 @@ export class NoteService {
     }
 
     fetchNotes() {
-        return this.http.get<Note[]>('http://localhost:3000/api/v1/notes', {
+        return this.http.get<Note[]>(ApiConstant.API_URL + '/api/v1/notes', {
             headers: new HttpHeaders({
                 'authorization': `Bearer ${localStorage.token}`
             })
@@ -28,7 +29,7 @@ export class NoteService {
     }
 
     createNote(body) {
-        return this.http.post<{ success: boolean; note: Note; }>('http://localhost:3000/api/v1/notes/create', body, {
+        return this.http.post<{ success: boolean; note: Note; }>(ApiConstant.API_URL + '/api/v1/notes/create', body, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 'authorization': `Bearer ${localStorage.token}`

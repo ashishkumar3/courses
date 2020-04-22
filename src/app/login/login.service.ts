@@ -5,6 +5,8 @@ import * as Joi from '@hapi/joi';
 import { User } from './user.model';
 import { Observable } from 'rxjs';
 
+import { ApiConstant } from '../api-constants';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -26,7 +28,7 @@ export class LogInService {
     }
 
     loginUser(body: User): Observable<{ success: boolean; message: string; token: string; }> {
-        return this.http.post<{ success: boolean; message: string; token: string; }>(this.LOGIN_URL, body);
+        return this.http.post<{ success: boolean; message: string; token: string; }>(ApiConstant.API_URL + '/auth/login', body);
     }
 
 }
