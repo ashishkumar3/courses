@@ -19,7 +19,8 @@
             <textarea class="form-control" id="question_body" placeholder="What exact problem you have?" rows="7"
                 name="description" required ngModel></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid"
+            [ngClass]="{ 'cursor-not-allowed': !form.valid, 'cursor-pointer': form.valid }">Submit</button>
     </form>
 </div>
 <div class="modal" [ngClass]="{ 'showModal': modal===true, 'hideModal': modal===false }">

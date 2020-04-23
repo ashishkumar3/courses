@@ -1,13 +1,13 @@
 
-@import 'bootswatch/dist/lux/bootstrap.css';
+/* @import 'bootswatch/dist/lux/bootstrap.css'; */
 
 html {
     overflow-y: scroll;
 }
 
-.btn {
+/* .btn {
     border-radius: 4px;
-}
+} */
 
 /* .btn-primary {
     background-color: rgb(49, 49, 80)
@@ -19,14 +19,36 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+
+
+/* h1, h2, h3, h4, h5, h6 {
     text-transform: unset;
 }
 
 textarea { resize: none; }
 
-input {
+.form-control {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
     border-radius: 4px;
 }
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+
+/* angular.json scripts */
+/* "./node_modules/jquery/dist/jquery.min.js",
+"./node_modules/popper.js/dist/umd/popper.min.js",
+"./node_modules/bootstrap/dist/js/bootstrap.min.js" */

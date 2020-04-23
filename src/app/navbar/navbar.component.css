@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #D1D2F9;
@@ -6,17 +6,17 @@
 
 .nav {
     display: flex;
-    /* border: 1px solid blue; */
-    /* margin: 0rem 2rem; */
-    /* padding: 1.5rem 0rem; */
+    border: 1px solid blue;
+    margin: 0rem 2rem;
+    padding: 1.5rem 0rem;
 }
 
 .nav-item {
-    /* border: 1px solid red; */
-}
+    border: 1px solid red;
+} */
 
-.nav-item a {
-    /* border: 1px solid green; */
+/* .nav-item a {
+    border: 1px solid green;
     padding: 1.5rem 2rem;
     color: #576490;
     transition: 300ms ease;
@@ -35,4 +35,12 @@
 
 .signupBtn {
     border: 1px solid black;
+} */
+
+.navbar {
+    justify-content: space-between;
+}
+
+span {
+    margin: 0 10px;
 }

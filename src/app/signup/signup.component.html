@@ -44,7 +44,8 @@
                 </label>
             </div>
         </fieldset>
-        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid"
+            [ngClass]="{ 'cursor-not-allowed': !f.valid, 'cursor-pointer': f.valid }">Submit</button>
         <small id="login" class="form-text text-muted">Already have an account? <a routerLink="/login">Login</a>
             .</small>
     </fieldset>

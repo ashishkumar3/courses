@@ -1,5 +1,5 @@
-<div class="col-md-8 container">
-    <div class="row border py-2" *ngIf="question">
+<div class="col-md-8 container" *ngIf="question">
+    <div class="row border py-2">
         <div class="col-md-1">{{ question.rating }}</div>
         <div class="col-md-11">
             <h1>{{ question.title }}</h1>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <hr>
-    <h6>Answers</h6>
+    <h6 *ngIf="question">Answers</h6>
     <hr>
     <div class="row border py-2 my-2" *ngFor="let answer of answers">
         <div class="col-md-1">{{ answer.rating }}</div>
@@ -61,10 +61,18 @@
     </div>
     <hr>
     <form action="">
-        <div class="form-group">
+        <div class="form-group" *ngIf="question">
             <label for="answer_body">Your Answer</label>
             <textarea class="form-control" id="answer_body" rows="7"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit Answer</button>
     </form>
+</div>
+<div class="container" *ngIf="!question">
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4 class="alert-heading">Question not found!</h4>
+        <p class="mb-0">The question you are looking for does not exist! <a routerLink="/qna" class="alert-link">Go back
+                to questions page?</a>.</p>
+    </div>
 </div>
