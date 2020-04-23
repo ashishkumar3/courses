@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import * as Joi from '@hapi/joi';
 
 import { User } from './user-signup.model';
+import { ApiConstant } from '../api-constants';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SignUpService {
 
-    private SIGNUP_URL = 'http://localhost:3000/auth/signup';
+    private SIGNUP_URL = ApiConstant.API_URL + '/auth/signup';
 
     schema: Joi.Schema = Joi.object({
         name: Joi.string()
