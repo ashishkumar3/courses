@@ -12,14 +12,15 @@ export class UserComponent implements OnInit {
 
   user_id: number;
   user: User;
+  loading: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit(): void {
     this.user_id = this.activatedRoute.snapshot.params['id'];
     this.userService.fetchUserWithId(this.user_id).subscribe(user => {
-      console.log(user);
       this.user = user;
+      this.loading = false;
     });
   }
 

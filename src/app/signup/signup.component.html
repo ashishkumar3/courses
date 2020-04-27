@@ -1,5 +1,7 @@
-<img *ngIf="signingUp" src="../../assets/svg/pacman.svg">
-<form *ngIf="!signingUp" class="container" (ngSubmit)="onSubmit(f)" #f="ngForm">
+<div class="d-flex justify-content-center loading" *ngIf="loading">
+    <img src="../../assets/loadngs.gif" alt="loading">
+</div>
+<form *ngIf="!loading" class="container" (ngSubmit)="onSubmit(f)" #f="ngForm">
     <fieldset>
         <div class="alert alert-dismissible alert-warning" *ngIf="errorMessage">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -10,7 +12,7 @@
         <p>Start learning today!</p>
         <div class="row">
             <div class="form-group col-lg-6 has-danger">
-                <label for="name">Name*</label>
+                <label for="name">Username*</label>
                 <input type="text" class="form-control" id="name" placeholder="Your full name" ngModel name="name"
                     required>
             </div>

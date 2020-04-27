@@ -25,6 +25,8 @@ export class NotesComponent implements OnInit {
   toggleNoteModal: boolean = false;
   toggleNoteCard: boolean = false;
 
+  loading: boolean = true;
+
   constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class NotesComponent implements OnInit {
   getAllNotes() {
     this.noteService.fetchNotes().subscribe(notes => {
       this.notes = notes;
+      this.loading = false;
     }, error => {
       this.errorMessage = error.message;
     });

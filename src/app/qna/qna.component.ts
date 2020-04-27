@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class QnaComponent implements OnInit {
 
   questions: Question[] = [];
+  loading: boolean = true;
 
   constructor(private qnaService: QnaService) { }
 
@@ -21,6 +22,7 @@ export class QnaComponent implements OnInit {
   private getAllQuestions() {
     this.qnaService.fetchAllQuestions().subscribe(response => {
       this.questions = response;
+      this.loading = false;
     }, (error: HttpErrorResponse) => {
       console.log(error.message);
     });

@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
 
   errorMessage: string = null;
 
-  signingUp: boolean = false;
+  loading: boolean = false;
 
   genders = ['Male', 'Female', 'Other'];
 
@@ -60,15 +60,15 @@ export class SignupComponent implements OnInit {
         password: this.user.password
       };
 
-      this.signingUp = true;
+      this.loading = true;
 
       this.signupService.createUser(body).subscribe(response => {
-        this.signingUp = false;
+        this.loading = false;
 
         localStorage.token = response.token;
         this.router.navigate(['/dashboard']);
       }, error => {
-        this.signingUp = false;
+        this.loading = false;
         this.errorMessage = error.error.message;
       });
 

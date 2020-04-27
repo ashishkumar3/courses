@@ -1,11 +1,18 @@
-<div class="col-md-8 container">
-    <div class="row border py-2" *ngIf="question">
-        <div class="col-md-1">{{ question.rating }}</div>
+<div class="d-flex justify-content-center loading" *ngIf="loading">
+    <img src="../../assets/loadngs.gif" alt="loading">
+</div>
+<div class="col-md-8 container" *ngIf="question">
+    <div class="row border py-2">
+        <div class="col-md-1 flex-column">
+            <i class="far fa-thumbs-up" (click)="incRating()"></i>
+            <h3 class="">{{ question.rating }}</h3>
+            <i class="far fa-thumbs-down" (click)="decRating()"></i>
+        </div>
         <div class="col-md-11">
             <h1>{{ question.title }}</h1>
             <p>{{ question.description }}</p>
             <footer class="blockquote-footer d-flex justify-content-end"><a
-                    [routerLink]="['users', question.user_id]">@{{ question.question_by | titlecase }}</a> <cite
+                    [routerLink]="['/qna/users', question.user_id]">@{{ question.question_by | titlecase }}</a> <cite
                     title="Source Title"> {{ question.created_at | date: 'EEEE, MMMM d, y' }}</cite>
             </footer>
             <hr>
@@ -31,11 +38,14 @@
     <h6>Answers</h6>
     <hr>
     <div class="row border py-2 my-2" *ngFor="let answer of answers">
-        <div class="col-md-1">{{ answer.rating }}</div>
+        <div class="col-md-1">
+            <i class="far fa-smile"></i>
+            {{ answer.rating }}
+        </div>
         <div class="col-md-11">
             <p>{{ answer.description }}</p>
             <footer class="blockquote-footer d-flex justify-content-end"><a
-                    [routerLink]="['users', question.user_id]">@{{ answer.answer_by | titlecase }}</a> <cite
+                    [routerLink]="['/qna/users', question.user_id]">@{{ answer.answer_by | titlecase }}</a> <cite
                     title="Source Title"> {{ answer.created_at | date: 'EEEE, MMMM d, y' }}</cite>
             </footer>
             <hr>
@@ -46,7 +56,7 @@
                     </div>
                     <div class="col-md-11">
                         <p>{{ comment.description }} - <a
-                                [routerLink]="['users', comment.user_id]">@{{ comment.comment_by | titlecase }}</a>
+                                [routerLink]="['/qna/users', comment.user_id]">@{{ comment.comment_by | titlecase }}</a>
                             <cite title="Source Title" class="">
                                 {{ comment.created_at | date: 'EEEE, MMMM d, y' }}</cite>
                         </p>

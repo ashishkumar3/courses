@@ -19,6 +19,7 @@ export class QuestionComponent implements OnInit {
   answers: Answer[];
   comments: Comment[];
   users: User[];
+  loading: boolean = true;
 
   constructor(private questionService: QuestionService, private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
@@ -31,7 +32,6 @@ export class QuestionComponent implements OnInit {
 
     // fetch the question with id as ques_id
     this.questionService.fetchQuestionDetails(this.ques_id).subscribe(response => {
-      console.log(response);
       this.question = response['question'][0];
       this.answers = response['answers'];
       this.comments = response['comments'];
@@ -47,7 +47,16 @@ export class QuestionComponent implements OnInit {
         cmnt.comment_by = this.users.find(user => user.id === cmnt.user_id).name;
       }
 
+      this.loading = false;
     });
+  }
+
+  incRating() {
+    // increment the rating
+  }
+
+  decRating() {
+    // decreament the rating
   }
 
 }

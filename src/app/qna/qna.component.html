@@ -6,7 +6,11 @@
     <div class="ask d-flex flex-row-reverse my-2">
         <a routerLink="/qna/ask" class="btn btn-primary">Ask</a>
     </div>
-    <ul class="list-group" *ngIf="questions">
+    <h6 class="text-uppercase pl-1">Recent Activity</h6>
+    <div class="d-flex justify-content-center loading" *ngIf="loading">
+        <img src="../../assets/loadngs.gif" alt="loading">
+    </div>
+    <ul class=" list-group" *ngIf="questions">
         <li class="list-group-item d-flex justify-content-between align-items-center"
             *ngFor="let question of questions">
             <div>

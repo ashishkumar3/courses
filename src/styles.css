@@ -7,6 +7,8 @@ html {
 
 .btn {
     border-radius: 4px;
+    /* padding: 1rem 2.5rem;
+    font-size: 16px; */
 }
 
 /* .btn-primary {
@@ -29,4 +31,16 @@ textarea { resize: none; }
 
 input {
     border-radius: 4px;
+}
+
+.form-control {
+    border-radius: 4px;
+}
+
+.far {
+    font-size: 24px;
+}
+
+.loading img {
+    width: 100px;
 }

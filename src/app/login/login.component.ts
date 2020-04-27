@@ -13,7 +13,7 @@ import { LogInService } from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-  logingIn: boolean = false;
+  loading: boolean = false;
   errorMessage: string = null;
 
   rememberMe: boolean = false;
@@ -52,13 +52,13 @@ export class LoginComponent implements OnInit {
 
   private login() {
     if (this.isUserValid()) {
-      this.logingIn = true;
+      this.loading = true;
 
       this.loginService.loginUser(this.user).subscribe(response => {
         localStorage.token = response.token;
         this.router.navigate(['dashboard']);
       }, error => {
-        this.logingIn = false;
+        this.loading = false;
         this.errorMessage = error.error.message;
       });
 

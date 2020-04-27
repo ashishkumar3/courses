@@ -1,5 +1,7 @@
-<img *ngIf="logingIn" src="../../assets/svg/pacman.svg">
-<form *ngIf="!logingIn" class="container" (ngSubmit)="onSubmit(f)" #f="ngForm">
+<div class="d-flex justify-content-center loading" *ngIf="loading">
+    <img src="../../assets/loadngs.gif" alt="loading">
+</div>
+<form *ngIf="!loading" class="container" (ngSubmit)="onSubmit(f)" #f="ngForm">
     <fieldset>
         <div class="alert alert-dismissible alert-warning" *ngIf="errorMessage">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
