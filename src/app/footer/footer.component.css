@@ -46,3 +46,23 @@ ul {
     margin: 0;
     border: 1px solid green;
 } */
+
+footer {
+    padding: 1rem 6rem;
+}
+
+.backToTop {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: rgb(206, 215, 223);
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.show-backToTop {
+    opacity: 1;
+    transition: all .2s ease-in-out;
+   }

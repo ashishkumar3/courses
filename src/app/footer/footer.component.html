@@ -38,3 +38,23 @@
         <li>Copyright CompanyName. All Rights Reserved.</li>
     </ul>
 </footer> -->
+
+<footer class="row">
+    <div class="col-lg-12">
+        <ul class="list-unstyled">
+            <li class="float-lg-right">
+                <a (click)="scrollToTop()">
+                    <i class="fa fa-chevron-up backToTop" [ngClass]="{'show-backToTop': windowScrolled}"></i>
+                </a>
+            </li>
+            <li><a routerLink="/blogs">Blog</a>
+            </li>
+            <li><a routerLink="/explore">Explore</a></li>
+            <li><a routerLink="/contact">Contact</a></li>
+            <li><a href="https://github.com/ashishkumar3/">GitHub</a></li>
+            <li><a routerLink="/qna">QNA</a></li>
+            <li><a routerLink="/donate">Donate</a></li>
+        </ul>
+        <p>Made with <3 by <a href="https://instagram.com/ashishk1337">Ashish Kumar</a>.</p>
+    </div>
+</footer>
