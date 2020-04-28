@@ -21,6 +21,7 @@
     "@angular/router": "~9.0.2",
     "@hapi/joi": "^17.1.1",
     "@types/markdown-it": "0.0.9",
+    "angular-password-strength-meter": "^2.0.0",
     "bootstrap": "^4.4.1",
     "bootswatch": "^4.4.1",
     "jquery": "^3.4.1",
@@ -29,7 +30,8 @@
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.3",
