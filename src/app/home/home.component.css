@@ -66,3 +66,17 @@ img {
     font-family: 'Pacifico', cursive;
     font-weight: 400;
   }
+
+.blog-container {
+    /* height: 100vh; */
+    margin: 2rem 0rem;
+}
+
+.blog-img img {
+    height: 80vh;
+}
+
+.blog-banner {
+    font-family: 'Pacifico', cursive;
+    padding: 3rem;
+}

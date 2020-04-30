@@ -15,31 +15,32 @@
     <h1 class="banner">Just something to do</h1>
 </div>
 
-<div class="container">
-    <div class="jumbotron text-center">
-        <h1 class="display-3">Lorem ipsum!🎉</h1>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, nisi debitis id ipsum in
-            recusandae! ✨✨🌟</p>
-        <hr class="my-4">
-        <p>something somehitng.</p>
-        <p class="lead">
-            <a class="btn btn-primary" [routerLink]="isLoggedIn ? ['/explore'] : ['/signup']"
-                role="button">{{ isLoggedIn ? 'Explore' : 'Sign Up' }}</a>
-        </p>
+<div class="blog-container row">
+    <div class="col-md-6 blog-img d-flex justify-content-center
+    align-items-center">
+        <img src="../../assets/svg/blog.svg" alt="">
     </div>
-    <hr>
-    <div class="row my-5 p-4">
-        <blockquote class="blockquote text-center col-md-4">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-        </blockquote>
-        <blockquote class="blockquote text-center col-md-4">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-        </blockquote>
-        <blockquote class="blockquote text-center col-md-4">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-        </blockquote>
+    <div class="col-md-6 d-flex justify-content-left
+    align-items-center row">
+        <!-- To make it in col -->
+        <div class="text-center">
+            <h1 class="display-4 blog-banner">Read the blogs</h1>
+            <button class="btn btn-primary" routerLink="/blogs">Go to blogs</button>
+        </div>
+    </div>
+</div>
+
+<div class="blog-container row">
+    <div class="col-md-6 d-flex justify-content-left
+    align-items-center row">
+        <!-- To make it in col -->
+        <div class="text-center">
+            <h1 class="display-4 blog-banner">Ask or Search questions</h1>
+            <button class="btn btn-primary" routerLink="/qna">Go to questions page</button>
+        </div>
+    </div>
+    <div class="col-md-6 blog-img d-flex justify-content-center
+align-items-center">
+        <img src="../../assets/svg/questions/big_question_mark.svg" alt="">
     </div>
 </div>
