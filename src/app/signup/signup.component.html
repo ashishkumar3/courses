@@ -2,7 +2,7 @@
     <img src="../../assets/loadngs.gif" alt="loading">
 </div>
 <div class="container mx-auto my-4 row">
-    <div class="col-md-6">
+    <div class="col-md-7">
         <form *ngIf="!loading" class="container" (ngSubmit)="onSubmit(f)" #f="ngForm">
             <fieldset>
                 <div class="alert alert-dismissible alert-warning" *ngIf="errorMessage">
@@ -10,7 +10,7 @@
                     <h4 class="alert-heading">Warning!</h4>
                     <p class="mb-0">{{ errorMessage }}</p>
                 </div>
-                <legend class="display-4 my-4">Signup</legend>
+                <legend class="signup-banner">Signup</legend>
                 <div class="row">
                     <div class="form-group col-lg-6 has-danger">
                         <label for="name">Username*</label>
@@ -39,14 +39,6 @@
                         <small id="passwordHelp" class="form-text text-muted">Rewrite the password.</small>
                     </div>
                 </div>
-                <!-- <fieldset class="form-group">
-                    <div class="form-check" *ngFor="let gender of genders">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="gender" value="{{gender}}" ngModel>
-                            {{ gender }}
-                        </label>
-                    </div>
-                </fieldset> -->
                 <button type="submit" class="btn btn-primary" [disabled]="!f.valid"
                     [class.disabled-cursor]="!f.valid">Submit</button>
                 <small id="login" class="form-text text-muted">Already have an account? <a routerLink="/login">Login</a>
@@ -54,5 +46,5 @@
             </fieldset>
         </form>
     </div>
-    <img src="../../assets/svg/signup.svg" class="col-mg-6 w-50" alt="">
+    <img src="../../assets/svg/signup.svg" class="col-md-5 img-fluid" alt="">
 </div>

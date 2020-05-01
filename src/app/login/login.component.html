@@ -2,7 +2,7 @@
     <img src="../../assets/loadngs.gif" alt="loading">
 </div>
 <div class="container mx-auto row my-5">
-    <img src="../../assets/svg/login.svg" class="col-md-6" alt="">
+    <img src="../../assets/svg/login.svg" class="col-md-6 img-fluid" alt="">
     <form *ngIf="!loading" class="col-md-6" (ngSubmit)="onSubmit(f)" #f="ngForm">
         <fieldset>
             <div class="alert alert-dismissible alert-warning" *ngIf="errorMessage">
@@ -10,7 +10,7 @@
                 <h4 class="alert-heading">Warning!</h4>
                 <p class="mb-0">{{ errorMessage }}</p>
             </div>
-            <legend class="display-4 my-4">Login</legend>
+            <legend class="login-banner">Login</legend>
             <div class="row">
                 <div class="form-group col-lg-12 has-danger">
                     <label for="email">Email</label>
@@ -29,7 +29,8 @@
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!f.valid"
                 [class.disabled-cursor]="!f.valid">Login</button>
-            <small id="login" class="form-text text-muted my-2">Dont have an account? <a routerLink="/signup">Signup</a>
+            <small id="dont-have-acc-text" class="form-text text-muted my-2">Dont have an account? <a
+                    routerLink="/signup">Signup</a>
                 .</small>
         </fieldset>
     </form>

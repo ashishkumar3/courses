@@ -1,6 +1,37 @@
-img {
-    width: 50%;
-}
+
 .disabled-cursor {
     cursor: not-allowed;
+}
+
+.login-banner {
+    font-size: 3rem;
+}
+
+@media only screen and (max-width: 575px) {
+    .btn-primary {
+        width: 100%;
+    }
+
+    #dont-have-acc-text {
+        text-align: center;
+    }
+
+    img {
+        /* border: 1px solid black; */
+        /* display: none; */
+        height: 30vh;
+        width: 100%;
+    }
+
+    .login-banner {
+        font-size: 2rem;
+    }
+}
+@media only screen and (max-width: 768px) {
+    img {
+        /* border: 1px solid black; */
+        /* display: none; */
+        height: 30vh;
+        width: 100%;
+    }
 }
