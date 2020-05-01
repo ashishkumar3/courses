@@ -8,3 +8,13 @@
     display: flex;
     align-items: center;
 }
+
+.rating {
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 575px) {
+    .submit-answer {
+        width: 100%;
+    }
+}

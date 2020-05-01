@@ -3,12 +3,12 @@
 </div>
 <div class="col-md-8 container" *ngIf="question">
     <div class="row border py-2">
-        <div class="col-md-1 flex-column">
-            <i class="far fa-thumbs-up" (click)="incRating()"></i>
-            <h3 class="">{{ question.rating }}</h3>
-            <i class="far fa-thumbs-down" (click)="decRating()"></i>
+        <div class="col-1 flex-column rating">
+            <i class="fas fa-angle-up " (click)="incRating()"></i>
+            <div class="">{{ question.rating }}</div>
+            <i class="fas fa-angle-down " (click)="decRating()"></i>
         </div>
-        <div class="col-md-11">
+        <div class="col-11">
             <h1>{{ question.title }}</h1>
             <p>{{ question.description }}</p>
             <footer class="blockquote-footer d-flex justify-content-end"><a
@@ -75,6 +75,6 @@
             <label for="answer_body">Your Answer</label>
             <textarea class="form-control" id="answer_body" rows="7"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit Answer</button>
+        <button type="submit" class="submit-answer btn btn-primary">Submit Answer</button>
     </form>
 </div>
