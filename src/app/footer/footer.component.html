@@ -1,17 +1,23 @@
-<footer class="container col-md-12">
-    <ul class="list-unstyled">
-        <li class="float-lg-right">
-            <a (click)="scrollToTop()">
-                <i class="fa fa-chevron-up backToTop" [ngClass]="{'show-backToTop': windowScrolled}"></i>
-            </a>
-        </li>
-        <li><a routerLink="/blogs">Blog</a>
-        </li>
-        <li><a routerLink="/explore">Explore</a></li>
-        <li><a routerLink="/contact">Contact</a></li>
-        <li><a href="https://github.com/ashishkumar3/">GitHub</a></li>
-        <li><a routerLink="/qna">QNA</a></li>
-        <li><a routerLink="/donate">Donate</a></li>
-    </ul>
-    <p>Made with ❤️ by <a href="https://instagram.com/ashishk1337">Ashish Kumar</a>.</p>
+<footer class="">
+    <div class="d-flex">
+        <div class="">
+            <a class="logo-text" routerLink="/" id="top">
+                <img src="../../assets/logos/logo.png" alt="logo" class="logo"> Ashish</a>
+        </div>
+        <div class="">
+            <ul class="list-unstyled d-flex">
+                <li class="float-lg-right">
+                    <a (click)="scrollToTop()">
+                        <i class="fa fa-chevron-up backToTop" [ngClass]="{'show-backToTop': windowScrolled}"></i>
+                    </a>
+                </li>
+                <li><a routerLink="/blogs" class="">Blog</a>
+                </li>
+                <li><a routerLink="/explore" class="">Explore</a></li>
+                <li><a routerLink="/qna" class="">QNA</a></li>
+            </ul>
+            <p class="">Made with ❤️ by <a href="https://instagram.com/ashishk1337" class="">Ashish</a>.</p>
+        </div>
+    </div>
+    <hr>
 </footer>

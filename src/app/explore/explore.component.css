@@ -1,0 +1,22 @@
+img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+  }
+
+.news-heading {
+  font-family: 'Girassol', cursive;
+  font-size: 3rem;
+}
+
+p {
+  font-family: 'Special Elite', cursive;
+}
+
+.container {
+  /* background-image: url('../../assets/explore/newspaper-bg.jpg'); */
+  background-color: #F4F4E2;
+}
+
+.news-name {
+  font-size: 2rem;
+}

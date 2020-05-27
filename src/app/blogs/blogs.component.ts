@@ -8,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class BlogsComponent implements OnInit {
 
   blogs: { id: number, title: string; description: string; }[] = [
-
+    {
+      id: 1,
+      title: "Title",
+      description: "Description"
+    }
   ];
 
   constructor() { }

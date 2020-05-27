@@ -53,6 +53,7 @@ export class QuestionComponent implements OnInit {
 
   incRating() {
     // increment the rating
+    console.log(this.question.rating + 1);
   }
 
   decRating() {

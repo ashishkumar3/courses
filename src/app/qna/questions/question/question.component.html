@@ -4,9 +4,9 @@
 <div class="col-md-8 container" *ngIf="question">
     <div class="row border py-2">
         <div class="col-1 flex-column rating">
-            <i class="fas fa-angle-up " (click)="incRating()"></i>
+            <i class="fas fa-angle-up cursor-pointer" (click)="incRating()"></i>
             <div class="">{{ question.rating }}</div>
-            <i class="fas fa-angle-down " (click)="decRating()"></i>
+            <i class="fas fa-angle-down cursor-pointer" (click)="decRating()"></i>
         </div>
         <div class="col-11">
             <h1>{{ question.title }}</h1>
